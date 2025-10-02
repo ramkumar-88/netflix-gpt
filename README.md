@@ -1,5 +1,5 @@
 # Netflix GPT
-    - Creae React App
+    - React is create using Vite build tool (bundler) due to the Creae React App is deprecate
     - Configured TailwindCSS
 
 # Features
