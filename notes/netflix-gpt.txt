@@ -1,0 +1,198 @@
+Project
+=======
+NetflixGPT
+This app is building (video recorded) in mid of 2023
+
+Rough Note
+==========
+Features going to build in this project
+=======================================
+1.Authendication
+    google firebase to have a backend and connect a react application to the google firebase backend
+    to see how authendication works, 
+2.How we can create protected routes from authendication
+3.Form Handling
+4.Going to build where we will give input box in that using chat gpt api for give suggestions
+5.Focus on tailwind css
+
+NetflixGPT - The Begining - 01
+==============================
+1.Using create-react-app for build new project
+    npx create-react-app netflix-gpt
+    create-react-app using webpack behind the scene
+2.some scripts in added in the package.json file once we created using create-react-app
+3.use the npm start or npm run start to start the app, both are same
+4.Already has the HMR (Hot Module Replacement) - for refreshing automatically
+5.It already has the testing setup (once we use create-react-app)
+6.In this app- tailwind css is going to use for css
+7.install tailwind (check with the tailwind official page and take the comments based on the framework we choosen)
+8.tailwind.config.js file installed automatically (configure the project path in this file)
+9.write 3 lines in index.css file for complete tailwind framework
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+10.That's all we need, for tailwind getting into create-react-app
+11.He is planning the project
+12.He is saying we will learning lot of firebase and how to handle forms,
+how to use chat gpt or gpt api's in this project.
+13.created the components folder and utils folder
+14.created necessary files to components folder
+15.setup routing
+16.background image and logo image for Header
+17.creating login form
+18.he is using same login form for the sign up form also using one state variable.
+19.he is recommended the formik (library) for handling large forms with validation,
+because handlig large forms without library is not good and mess (validations are mess for large number of fields).
+20.In this project, he is using custom validation only not using any library.
+21.discuss about the useRef hook.
+22.create utilities for validation in seperate file,seperate function for validation 
+and show the error messages.
+23.use Ref for access the date in element and handle the validation in utils validate file.
+24.Build Authendication
+25.For Build Authendication we need back end, for the we will use google firebase.
+Firebase is Google's mobile and web development platform, providing a set of cloud-based tools and services that help developers build, manage, and scale applications without managing servers themselves. It offers features for user authentication, databases (like Realtime Database and Cloud Firestore), file storage, hosting, analytics, and cloud messaging, simplifying backend development so developers can focus on creating great user experiences. 
+26.create a project named "NetflixGPT" in firebase.
+27.add google analytics in firebase.
+28.enable firebase hosting also for this project for take the live url.
+29.copy the firebase config code and create the file called firebase.jsx in utils folder and paste it.
+30.enabling authendication for our project in google firebase.
+31.enable Email/Password in firebase authendication sign-in method section.
+32.going to do how we deploy our app in google firebase.
+33.use the command npm install -g firebase-tools to install the firebase CLI into our system.
+34.use command firebase login for login into firebase
+this command will show the url to login into firebase and then start using firebase in your project.   
+35.2 methods of hosting in firebase.
+    1.we can deploy our self to firebase
+    2.push the code to git, git can deploy the code into firebase.
+36.we follow the code deploy by ourself method for hosting.
+37.firebase init
+    >> choose the hosting in list.
+    ask the question below:
+    what do you want to use as your public directory?
+        -- this is build directory to use as a public directory. (we can mention "dist" once use vite build tool otherwise mention "build")
+38.Firebase initialization complete
+39.Firebase deploy completed and received the live url. (received the host url)
+40.we can change the url also (if we purchased the domain)
+41.Refer the firebase documentation for a signup users.
+42.In firebase documentation go to the web section and see the manage users
+43.Use the Web modular API (it is the latest)
+44.Sign In process and api integration done.
+45.After do the Sign In/Sign Up store the user data into redux store and transfer the page into browse.
+use the below commands to install redux in our project.
+npm i -D @reduxjs/toolkit
+npm i react-redux
+46.Create a appStore and userSlice
+47.provide the store to the app in app.jsx file.
+48.use onAuthStateChanged for call some api call's (user sign in, user sign up, user logout)
+49.add the function in commonly so add in body file with useEffect (call on only once).
+50.when ever the user is login or sign up the page will redirect to browse page, that code also written in onAuthStateChanged function in body.
+51.create the signout functionality in header file, and the removeuser dispatch action is happened by the common onAuthStateChanged function, so no need to write here the removeUser dispatch action.
+52.use update profile api from firebase for update the display name after the user sign up/sign in api's.
+53.use the Api from firebase updateProfile for update the name to firebase once the user successfully sign up and add the photoURL in onAuthStateChanged function also, this is only add the data to redux store.
+54.get the photoURL from redux store and show in header component.
+55.restrict the header user icon and sign out button once the user is not sign in. (logout user should't show the user icon and sign out button)
+56.Going to use TMDB Api for fetch latest movies data.
+
+NetflixGPT - Build the core - 02 
+=================================
+1.Fixing some bugs in existing project.
+    restrict the browse page for the log out users and log in form for logged in users.
+    this code is writtern in onAuthStateChanged in header.js component.
+2.changing the useEffect onAuthStateChanged logic from body to header component,
+due to the router problem he faced during the development.
+3.he is keeping the route related code in header component only and removed the navigate
+in login component which he mentioned previously.    
+4.write a unscbscribe code in useEffect of onAuthStateChanged for remove the event listener
+when the component unmount.
+5.create a constant file and keep the static data's in constant file and from there refer the variable
+where ever you want. (keep all the hard coded strings and hard coded url's in this file)
+6.We are going get to build the browse page, get the movie list data's from the TMDB website api's.
+7.explaining some necessary things in tmdb website (api's)
+8.Select any list and note it down the tmdb given options in our constants.js file which is constant for all tmdb api call's.
+9.write the api call on browse page for get the api data's
+10.due the strict mode the in main.js or index.js the api calls are happening twice, but once we deploy the same code to production server, it will not call twice, api calls on only one time.
+11.we can remove strict mode and check, now the api calls are comes only once.
+12.react does extra rendering of your components to check for some inconsistency between your calls and it only happened in developer mode and it will throw an error if there is some inconsistency in your rendering cycle, so it is a good thing it's not a bad 
+13.put the received movie data into the redux store by creating movie slice
+and add the movie slice into app store and finally dispatch the action from browse page to movieslice
+14.keep the fetch data with url results in custom hook.
+use it in browse component.
+15.just call the function n browse page which is mentioned in hooks folder nowplayingMovies
+16.planning for browse page building
+          {/* 
+            MainContainer
+                - VideoBackground
+                - VideoTitle
+            SecondaryContainer
+                - MovieList * n
+                - cards * n
+          */}
+17.create mainContainer and secondaryContainer components.
+18.create videoTitle and videoBackground components
+19.Take first movie as main movie to show the video in browse page.
+20.build video title component
+21.build video background component
+22.take the movie videos (trailer,movie) from the seperate api from TMDB
+using the movie id.
+23.write the api call on videoBackground component and get the necessary one object only from the result of object array for extract the video type as trailer.
+24.the trailer object has the key attribute.
+25.basically every youtube video has the key in url, using the key attribute we can load the youtube video. 
+ex: https://www.youtube.com/watch?v=7ySTxMUfSec
+here v query string is a key.
+26.In Youtube click on the share button and find the embed iframe code from youtube.
+27.Always use a camelCase for html attributes inside jsx in react.
+28.keep the trailer data to the redux store (movie slice) after api response and use it from store after retrived using useSelector.
+29.create the seperate custom hook for useMovieTrailer and call the function by passing the movieId from the videoBackground component for achieving the modular code approach.
+30.building video background in neet with css.
+31.set the aspect-video class name for iframe.
+32.give a autoplay=1&mute=1 for autoplay the video on youtube.
+
+Notes from akshai:
+=================
+# Netflix GPT
+    - React is create using Vite build tool (bundler) due to the 
+      Create React App is deprecate
+    - Configured TailwindCSS
+    - Header
+    - Routing of App
+    - Login Form
+    - Sign Up Form
+    - Form Validation
+    - useRef Hook
+    - Firebase Setup
+    - Deploying out app to production    
+    - Create SignUp User Account
+    - Implement Sign In User Api
+    - Created Redux Store with userSlice
+    - Implemented Sign out
+    - Update Profile
+    - BugFix: Sign up user displayName and profile picture update
+    - BugFix: if the user is not logged in Redirect /browse to login Page and
+    vice-versa
+    - Unsubscribed to the onAuthStateChanged callback
+    - Add hardcoded values to the constants file
+    - Register TMDB API & create an app & get access token
+    - Get Data from TMDB now playing movies list API
+    - Custom Hook for Now Playing Movies
+    - Create movieSlice
+    - Update Store with movies Data
+    - Planning for MainContainer & secondary Container 
+    - Fetch Data for Trailer Video
+    - Update Store with Trailer Video Data
+    - Embedded the Youtube video and make it autoplay and mute
+    - Tailwind Classes to make Main Container look awesome
+
+# Features
+    - Login/Sign Up
+        - Sign In/Sing Up Form
+        - redirect to Browser Page (after login)
+    - Browse (after authentication)
+        - Header
+        - Main Movie
+            - Trailer in Background
+            - Title & Description
+            - MovieSuggestion
+                - MovieLists * N (it is vertically scrollable)
+    - NetflixGPT
+        - Search Bar
+        - Movie Suggestions
