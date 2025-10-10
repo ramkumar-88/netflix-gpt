@@ -16,4 +16,53 @@ export default VideoBackground
 Question:
 setting and getting the state value in the same component, how it will work and which is come first
 and if the show state is come first the how the state will show without updating the store.
- 
+
+2.why the below code console 2 times?
+import MovieCard from "./MovieCard"
+
+const MovieList = ({title,movies}) => {
+    console.log(movies);
+  return (
+    <div>
+        <div>
+            <h1>{title}</h1>
+            <div>
+                <MovieCard />
+            </div>
+        </div>    
+    </div>
+  )
+}
+
+export default MovieList
+
+3.import MovieCard from "./MovieCard"
+
+const MovieList = ({title,movies}) => {
+    console.log(movies);
+    console.log(movies?.[0]);
+
+  return (
+    <div>
+        <div>
+            <h1>{title}</h1>
+            <div>
+                {movies?.length > 0 && <MovieCard posterPath={movies[0].poster_path} />}
+            </div>
+        </div>    
+    </div>
+  )
+}
+
+export default MovieList
+question:
+some times the 
+    console.log(movies?.[0]);
+makes error, 
+answer:
+Even though the first console.log(movies) prints an array of 20 items, JavaScript’s asynchronous rendering and timing can cause this issue.
+
+If movies comes from an API call or Redux state, it may be undefined or empty at the first render.
+
+check before accessing
+    console.log(movies?.[0]);

@@ -146,6 +146,32 @@ here v query string is a key.
 30.building video background in neet with css.
 31.set the aspect-video class name for iframe.
 32.give a autoplay=1&mute=1 for autoplay the video on youtube.
+33.planning for secondary container
+34.we can find the poster path from movies list for show the movie card.
+we can find the image url from TMDM website and add the poster path in end of the image url and then we can see the image.
+poster_path: "/1E5baAaEse26fej7uHcjOgEE2t2.jpg"
+ex: https://image.tmdb.org/t/p/w500/1E5baAaEse26fej7uHcjOgEE2t2.jpg
+35.use the image url in costants file and use that image url in application from the costants file variable.
+36.show the multiple movieList and multiple movieCard components.
+37.doing the movielist overlap the main video little bit.
+       <div className="bg-black">
+            <div className="-mt-52 pl-12 relative z-20">
+            </div>
+       </div>
+       -- set the background black color for parent div and 
+       set relative and z index for child div.
+       so only it's looks like overlapping with the transparent background.
+38.he is explaining with the online draw of container movement.
+39.showing other movie list also in dynamic instead of static.
+40.creating popular videos custom hook as like now playing custom hook.
+using the TMDB api reference of 
+https://api.themoviedb.org/3/movie/popular
+41.created popularVideos function in moviesSlice and dispatch the popular movies date to the store and access in necessary places pass the date to the movieList component then show the movies list in dynamic in browse page.
+42.howe work add hte top rated movies, trending movies in the list from
+get the api's on the TMDB and add the new list.
+43.In the next section.
+use the chat GPT apis and get the movie suggestions and create the netflixGPT,
+and then make the site responsive also, till now we create the netflix web app.
 
 Notes from akshai:
 =================
@@ -181,7 +207,14 @@ Notes from akshai:
     - Update Store with Trailer Video Data
     - Embedded the Youtube video and make it autoplay and mute
     - Tailwind Classes to make Main Container look awesome
-
+    - Build Secondary Component
+    - Build Movie List
+    - build Movie Card
+    - TMDB Image CDN URL
+    - Made the Browse page amazing with Tailwind CSS
+    - usePopularMovies Custom hook
+    
+    
 # Features
     - Login/Sign Up
         - Sign In/Sing Up Form
