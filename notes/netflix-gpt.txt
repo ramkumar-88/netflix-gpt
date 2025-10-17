@@ -167,11 +167,47 @@ ex: https://image.tmdb.org/t/p/w500/1E5baAaEse26fej7uHcjOgEE2t2.jpg
 using the TMDB api reference of 
 https://api.themoviedb.org/3/movie/popular
 41.created popularVideos function in moviesSlice and dispatch the popular movies date to the store and access in necessary places pass the date to the movieList component then show the movies list in dynamic in browse page.
-42.howe work add hte top rated movies, trending movies in the list from
-get the api's on the TMDB and add the new list.
+42.home work
+Add the top rated and trending movies to the list using the api's from the TMDB website.
 43.In the next section.
 use the chat GPT apis and get the movie suggestions and create the netflixGPT,
-and then make the site responsive also, till now we create the netflix web app.
+and then make the site responsive also, till now we create the netflix web app only.
+44.he saying once we has the foundation strong means we can build big projects in a modular way in a clean code way in a testable way,
+
+NetflixGPT - Wrapping Up - 03
+=============================
+1.Going to build GPT Api inside thie project.
+2.GPT Search page with the Search bar.
+3.We are trying to build a movie recommendation system using GPT.
+4.We are using Open Ai GPT Api's not a Chat GPT,
+Chat GPT is a User Interface it's kind of like a front end on top of like a 
+GPT Api's (which is using GPT APi's in background) (build by Open Ai).
+5.Building Search Page.
+6.Let's create a seperate component and integrate the search component
+in home page using button or link.
+7.create a button on header and create a GPT search component.
+8.when the GPT Search button clicked the search component must showed.
+9.implement the toggle functionality for GptSearch button, once its true show the
+search page or don't show the search page.
+10.create new slice and keep the toggle information in store.
+11.you have to use fragment if we use multiple components in condition block.
+<><MainContainer />
+      <SecondaryContainer /></>
+12.toggle functionality is working fine now we can build the GPT search page.
+13.create the Gpt Search component.
+14.let us create two components, Gpt Search bar and GptMovieSuggestion
+15.set constant url in constant.jsx file and use the variable names inside the files, where ever we need this url. 
+16.Building multi Language pages.
+17.Create a language constants file seperately.
+18.let u make the GPT search page in multi language.
+19.create new redux store slice for keep app config.
+20.zustand - one of state management library which is getting popular like redux.
+21.never push console.log to your production.
+22.to make a dynamic, we have to give like the below.
+>> {lang[langKey].search} 
+23.we have seen how we can make our page multilingual (multi language option in gpt search page)
+24.show the multi language options only in gpt search page and hide in other pages (because we are not have the multi language for all pages)
+
 
 Notes from akshai:
 =================
@@ -213,7 +249,10 @@ Notes from akshai:
     - TMDB Image CDN URL
     - Made the Browse page amazing with Tailwind CSS
     - usePopularMovies Custom hook
-    
+    - GPT Search Page
+    - GPT Search Bar
+    - (BONUS) Multi-language Feature in out App (Big Feature)    
+
     
 # Features
     - Login/Sign Up
