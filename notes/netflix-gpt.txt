@@ -207,7 +207,41 @@ search page or don't show the search page.
 >> {lang[langKey].search} 
 23.we have seen how we can make our page multilingual (multi language option in gpt search page)
 24.show the multi language options only in gpt search page and hide in other pages (because we are not have the multi language for all pages)
-
+25.Let's continue to build a GPT search page.
+26.first we have to register into OpenAI for that we will go to
+platform.
+https://platform.openai.com/
+27.we have to get a api keys from the platform.openai website.
+we can refer the below url:
+https://platform.openai.com/api-keys
+28.create a new secret key (once you created and used one time, you can't access it again)
+openai gives some minimum credits as free (like 5$), after that it cost.
+mentioned the key in constants file.
+Name - NetflixGPT-Project
+29.we will have to install library. That library is known as NPM open AI.
+for make a api call directly.
+30.install the openAI.
+using the command
+npm install openai
+31.create openai.js file in utils folder and add the necessary code within
+this file.
+32.const openai = new OpenAI({
+  apiKey: OPENAI_KEY,
+  dangerouslyAllowBrowser: true,
+});
+>> 
+  dangerouslyAllowBrowser: true,
+if use from front end we have to mention the option,due to the security of secret key the openai show some error once we not use this one.
+33.paid $5 for openai to access api for study and personal development.
+34.can able to receive the response from openai api.
+35.we are going to search movies using names which we received as response from openai in tmdb and show to the necessary details for each movie to user.
+36.making an api call to the tmdb and get the results.
+37.store the tmdb results into the gptslice store in the function name
+addGptMovieResult.
+38.store the movienames from gpt response and movie details results from tmdb response to the redux store.
+39.Building GPT Movie Suggestions UI
+40.show the movies in movie suggestion page
+41.use the movie list component for show the movie image in after the search bar.
 
 Notes from akshai:
 =================
